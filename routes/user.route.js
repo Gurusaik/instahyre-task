@@ -5,7 +5,7 @@ const {registerUser,markAsSpam,searchUser,userLogin}=require('../controller/user
 router.post('/register',registerUser)
 router.post('/login',userLogin)
 router.post('/mark-as-spam/:phoneNumber',markAsSpam)
-router.get('/search/:userName',searchUser)
+router.get('/search/:phoneNumber',searchUser)
 
 module.exports=router
 

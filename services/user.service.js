@@ -23,11 +23,8 @@ exports.getUsers = async function(req){
     let resultArr = []
     let users;
         try{
-          users = await User.where('name','like',`%${req.params.userName}%`).fetchAll({require:true})
-       }catch(err){
-           // console.log(err)
-        }
-        for(let i=0;i<users.length;i++){
+          users = await User.where('phone_number','like',`%${req.params.phoneNumber}%`).fetchAll({require:true})
+          for(let i=0;i<users.length;i++){
             let spamCount;
             let userObj={}
             userObj.name = users.models[i].attributes.name,
@@ -41,5 +38,9 @@ exports.getUsers = async function(req){
             userObj.spammedBy = spamCount
             resultArr.push(userObj)
             }
+       }catch(err){
+           //console.log(err)
+           return resultArr
+        }
     return resultArr
 }
