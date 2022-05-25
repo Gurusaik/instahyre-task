@@ -20,6 +20,7 @@ const registerUser = async function(req,res){
                 return res.status(200).json({ status:true, successResponse:user.attributes })
             }).catch(err=>{
                // console.log(err)
+               return res.status(400).json({ status:false, errorResponse:"this phone number is already registered" })
             })
         })})
  }
